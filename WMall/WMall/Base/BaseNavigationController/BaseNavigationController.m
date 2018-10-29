@@ -7,7 +7,6 @@
 //
 
 #import "BaseNavigationController.h"
-#import "DCGoodsDetailViewController.h"
 
 @interface BaseNavigationController ()
 
