@@ -67,7 +67,7 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 - (UIScrollView *)scrollView {
 	if (!_scrollView) {
 		_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-		_scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - SafeAreaTopHeight) * 2);
+		_scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - SafeAreaTopHeight - 50) * 2);
 		_scrollView.showsVerticalScrollIndicator = NO;
 		_scrollView.pagingEnabled = YES;
 		//设置scrollView不能滑动，使用上拉刷新，下拉加载的方式滚动视图
@@ -84,7 +84,7 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 		
 		flow.minimumLineSpacing = 0;
 		flow.minimumInteritemSpacing = 0;
-		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - SafeAreaTopHeight) collectionViewLayout:flow];
+		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - SafeAreaTopHeight - 50) collectionViewLayout:flow];
 		_collectionView.showsVerticalScrollIndicator = NO;
 		_collectionView.delegate = self;
 		_collectionView.dataSource = self;
@@ -111,7 +111,7 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 
 - (WKWebView *)webView {
 	if (!_webView) {
-		_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaTopHeight, SCREEN_WIDTH, SCREEN_HEIGHT)];
+		_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaTopHeight - 50, SCREEN_WIDTH, SCREEN_HEIGHT)];
 		_webView.scrollView.contentInset = UIEdgeInsetsMake(SafeAreaTopHeight, 0, 0, 0);
 		_webView.scrollView.scrollIndicatorInsets = _webView.scrollView.contentInset;
 		[self.scrollView addSubview:_webView];
