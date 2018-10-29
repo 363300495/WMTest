@@ -10,6 +10,7 @@
 #import "DCGoodsBaseViewController.h"
 #import "DCGoodsParticularsViewController.h"
 #import "DCGoodsCommentViewController.h"
+#import "DCShoppingCarViewController.h"
 
 @interface DCGoodsDetailViewController () <UIScrollViewDelegate>
 
@@ -21,6 +22,9 @@
 @property (nonatomic, strong) UIButton *selectButton;
 /* 标题按钮底下的指示器 */
 @property (nonatomic, strong) UIView *indicatorView;
+
+/* 通知 */
+@property (weak, nonatomic) id notificationObserver;
 
 @end
 
@@ -36,11 +40,26 @@
 	[self setupTopButtonView];
 
 	[self addChildViewController];
+	
+	[self setupBottomButton];
+	
+	[self acceptNotification];
 }
+
+
 
 - (void)setupView {
 	
 	self.scrollerView.backgroundColor = self.view.backgroundColor;
+}
+
+- (void)acceptNotification {
+	
+	//父类加入购物车，立即购买通知
+	_notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:@"ClikAddOrBuy" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+		
+		DEBUGLog(@"加入购物车、立即购买");
+	}];
 }
 
 
@@ -140,6 +159,62 @@
 	[self addChildViewController:goodsCommentVC];
 }
 
+
+#pragma mark - 底部按钮(收藏 购物车 加入购物车 立即购买)
+- (void)setupBottomButton {
+	
+	[self setupLeftTwoButton];
+	
+	[self setupRightTwoButton];
+
+}
+
+#pragma mark - 收藏 购物车
+- (void)setupLeftTwoButton {
+	
+	NSArray *imagesNor = @[@"tabr_07shoucang_up",@"tabr_08gouwuche"];
+	NSArray *imagesSel = @[@"tabr_07shoucang_down",@"tabr_08gouwuche"];
+	CGFloat buttonW = SCREEN_WIDTH * 0.2;
+	CGFloat buttonH = 50;
+	CGFloat buttonY = SCREEN_HEIGHT - buttonH;
+	
+	for (NSInteger i = 0; i < imagesNor.count; i++) {
+		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+		[button setImage:[UIImage imageNamed:imagesNor[i]] forState:UIControlStateNormal];
+		button.backgroundColor = [UIColor whiteColor];
+		[button setImage:[UIImage imageNamed:imagesSel[i]] forState:UIControlStateSelected];
+		button.tag = i;
+		[button addTarget:self action:@selector(bottomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		CGFloat buttonX = (buttonW * i);
+		button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+		
+		[self.view addSubview:button];
+	}
+}
+
+#pragma mark - 加入购物车 立即购买
+- (void)setupRightTwoButton {
+	
+	NSArray *titles = @[@"加入购物车",@"立即购买"];
+	CGFloat buttonW = SCREEN_WIDTH * 0.3;
+	CGFloat buttonH = 50;
+	CGFloat buttonY = SCREEN_HEIGHT - buttonH;
+	
+	for (NSInteger i = 0; i < titles.count; i++) {
+		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+		button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+		[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		button.tag = i + 2;
+		[button setTitle:titles[i] forState:UIControlStateNormal];
+		button.backgroundColor = (i == 0) ? [UIColor redColor] : [UIColor colorWithHexString:@"#D6963B"];
+		[button addTarget:self action:@selector(bottomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		CGFloat buttonX = SCREEN_WIDTH * 0.4 + (buttonW * i);
+		button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+		
+		[self.view addSubview:button];
+	}
+}
+
 #pragma mark - 添加子控制器View
 - (void)addChildViewController {
 	
@@ -173,6 +248,25 @@
 	[self.scrollerView setContentOffset:offset animated:YES];
 }
 
+- (void)bottomButtonClick:(UIButton *)button {
+	
+	if (button.tag == 0) {
+		NSLog(@"收藏");
+		button.selected = !button.selected;
+	} else if (button.tag == 1) {
+		NSLog(@"购物车");
+		DCShoppingCarViewController *shopCarVC = [[DCShoppingCarViewController alloc] init];
+		[self.navigationController pushViewController:shopCarVC animated:YES];
+	} else  if (button.tag == 2 || button.tag == 3) { //父控制器的加入购物车和立即购买
+		//异步发通知
+		dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%zd",button.tag],@"buttonTag", nil];
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"ClikAddOrBuy" object:nil userInfo:dict];
+		});
+	}
+}
+
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
 	[self addChildViewController];
@@ -187,5 +281,9 @@
 	[self addChildViewController];
 }
 
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
+}
 
 @end
