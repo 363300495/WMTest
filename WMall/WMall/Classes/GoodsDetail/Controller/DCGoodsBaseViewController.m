@@ -7,6 +7,7 @@
 //
 
 #import "DCGoodsBaseViewController.h"
+#import "DCFeatureSelectionViewController.h"
 
 #import "DCShowTypeOneCell.h"
 #import "DCShowTypeTwoCell.h"
@@ -24,6 +25,9 @@
 #import <WebKit/WebKit.h>
 
 #import "AddressPickerView.h"
+
+#import "XWDrawerAnimator.h"
+#import "UIViewController+XWTransition.h"
 
 //header
 static NSString *const DCDetailCustomHeadViewID = @"DCDetailCustomHeadView";
@@ -52,17 +56,13 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 /* 选择地址弹框 */
 @property (strong , nonatomic) AddressPickerView *adPickerView;
 
+/* 通知 */
+@property (weak, nonatomic) id notificationObserver;
+
 @end
 
 @implementation DCGoodsBaseViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
-	[self setupView];
-	
-	[self setupViewScroller];
-}
 
 - (UIScrollView *)scrollView {
 	if (!_scrollView) {
@@ -119,6 +119,29 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 	return _webView;
 }
 
+#pragma mark - LifeCycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	[self setupView];
+	
+	[self setupViewScroller];
+	
+	[self acceptNotification];
+}
+
+
+- (void)acceptNotification {
+	
+	WEAKSELF(weakSelf);
+	//父类加入购物车，立即购买通知
+	_notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:@"ClikAddOrBuy" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+		
+		DCFeatureSelectionViewController *featureSelectionVC = [[DCFeatureSelectionViewController alloc] init];
+		featureSelectionVC.goodImageView = weakSelf.goodImageView;
+		[weakSelf setUpAlterViewControllerWith:featureSelectionVC WithDistance:SCREEN_HEIGHT * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
+	}];
+}
 
 - (void)setupView {
 	
@@ -220,7 +243,7 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 			DCDetailShuffingHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShuffingHeadViewID forIndexPath:indexPath];
 			headerView.shufflingArray = _shufflingArray;
 			reusableview = headerView;
-		} else if (indexPath.section == 5){
+		} else if (indexPath.section == 5) {
 			DCDetailCustomHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailCustomHeadViewID forIndexPath:indexPath];
 			reusableview = headerView;
 		}
@@ -297,6 +320,21 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 	}];
 }
 
+
+#pragma mark - 转场动画弹出控制器
+- (void)setUpAlterViewControllerWith:(UIViewController *)vc WithDistance:(CGFloat)distance WithDirection:(XWDrawerAnimatorDirection)vcDirection WithParallaxEnable:(BOOL)parallaxEnable WithFlipEnable:(BOOL)flipEnable {
+	[self dismissViewControllerAnimated:YES completion:nil]; //以防有控制未退出
+	XWDrawerAnimatorDirection direction = vcDirection;
+	XWDrawerAnimator *animator = [XWDrawerAnimator xw_animatorWithDirection:direction moveDistance:distance];
+	animator.parallaxEnable = parallaxEnable;
+	animator.flipEnable = flipEnable;
+	[self xw_presentViewController:vc withAnimator:animator];
+	WEAKSELF(weakSelf);
+	[animator xw_enableEdgeGestureAndBackTapWithConfig:^{
+		[weakSelf selfAlterViewback];
+	}];
+}
+
 #pragma mark - 更换地址
 - (void)changeUserAddress {
 	_adPickerView = [AddressPickerView shareInstance];
@@ -309,6 +347,15 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 		//选择数据后，刷新列表改变数据
 		[weakSelf.collectionView reloadData];
 	};
+}
+
+#pragma 退出界面
+- (void)selfAlterViewback {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
 }
 
 @end
