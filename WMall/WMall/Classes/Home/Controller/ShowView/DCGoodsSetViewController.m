@@ -145,4 +145,8 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
 }
 
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
+}
+
 @end
