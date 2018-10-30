@@ -23,9 +23,6 @@
 /* 标题按钮底下的指示器 */
 @property (nonatomic, strong) UIView *indicatorView;
 
-/* 通知 */
-@property (weak, nonatomic) id notificationObserver;
-
 @end
 
 @implementation DCGoodsDetailViewController
@@ -42,26 +39,13 @@
 	[self addChildViewController];
 	
 	[self setupBottomButton];
-	
-	[self acceptNotification];
+
 }
-
-
 
 - (void)setupView {
 	
 	self.scrollerView.backgroundColor = self.view.backgroundColor;
 }
-
-- (void)acceptNotification {
-	
-	//父类加入购物车，立即购买通知
-	_notificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:@"ClikAddOrBuy" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-		
-		DEBUGLog(@"加入购物车、立即购买");
-	}];
-}
-
 
 - (UIScrollView *)scrollerView {
 	
@@ -279,11 +263,6 @@
 	[self topButtonClick:button];
 	
 	[self addChildViewController];
-}
-
-
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
 }
 
 @end
