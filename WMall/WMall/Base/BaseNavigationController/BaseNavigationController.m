@@ -21,9 +21,8 @@
     self.navigationBar.hidden = YES;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-
-	return UIStatusBarStyleLightContent;
+- (UIViewController *)childViewControllerForStatusBarStyle {
+	return self.topViewController;
 }
 
 

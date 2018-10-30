@@ -22,7 +22,7 @@
     // 创建视图控制器
     UIViewController *rootViewController = [[rootViewControllerClass alloc] init];
     // 创建导航控制器
-    BaseNavigationController *naviViewController = [[navigationControllerClass alloc] initWithRootViewController:rootViewController];
+    UINavigationController *naviViewController = [[navigationControllerClass alloc] initWithRootViewController:rootViewController];
 	
     CGSize imageSize = CGSizeMake(49, 49);
     naviViewController.tabBarItem.image = [[[UIImage imageNamed:normalImageName] imageByScalingProportionallyToSize:imageSize] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

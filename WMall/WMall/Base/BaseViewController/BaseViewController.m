@@ -14,7 +14,7 @@
 	self.EmptyDataSetShouldDisplay = NO;
 
     self.view.backgroundColor = [UIColor colorWithHexString:BACKGROUND_COLOR];
-    
+	
     //解决隐藏navigaitioinbar返回手势失效的问题
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 
