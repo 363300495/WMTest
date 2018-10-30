@@ -298,6 +298,9 @@ static NSString *const DCOverFootViewID = @"DCOverFootView";
 	};
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
+}
 
 
 @end
