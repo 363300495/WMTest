@@ -64,60 +64,7 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 @implementation DCGoodsBaseViewController
 
 
-- (UIScrollView *)scrollView {
-	if (!_scrollView) {
-		_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-		_scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - SafeAreaTopHeight - 50) * 2);
-		_scrollView.showsVerticalScrollIndicator = NO;
-		_scrollView.pagingEnabled = YES;
-		//设置scrollView不能滑动，使用上拉刷新，下拉加载的方式滚动视图
-		_scrollView.scrollEnabled = NO;
-		[self.view addSubview:_scrollView];
-	}
-	return _scrollView;
-}
 
-- (UICollectionView *)collectionView {
-	if (!_collectionView) {
-		
-		UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
-		
-		flow.minimumLineSpacing = 0;
-		flow.minimumInteritemSpacing = 0;
-		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - SafeAreaTopHeight - 50) collectionViewLayout:flow];
-		_collectionView.showsVerticalScrollIndicator = NO;
-		_collectionView.delegate = self;
-		_collectionView.dataSource = self;
-		[self.scrollView addSubview:_collectionView];
-		
-		//注册header
-		[_collectionView registerClass:[DCDetailShuffingHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShuffingHeadViewID];
-		[_collectionView registerClass:[DCDetailCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailCustomHeadViewID];
-		//注册Cell
-		[_collectionView registerClass:[DCDetailGoodReferralCell class] forCellWithReuseIdentifier:DCDetailGoodReferralCellID];
-		[_collectionView registerClass:[DCShowTypeOneCell class] forCellWithReuseIdentifier:DCShowTypeOneCellID];
-		[_collectionView registerClass:[DCShowTypeTwoCell class] forCellWithReuseIdentifier:DCShowTypeTwoCellID];
-		[_collectionView registerClass:[DCShowTypeThreeCell class] forCellWithReuseIdentifier:DCShowTypeThreeCellID];
-		[_collectionView registerClass:[DCShowTypeFourCell class] forCellWithReuseIdentifier:DCShowTypeFourCellID];
-		[_collectionView registerClass:[DCDetailLikeCell class] forCellWithReuseIdentifier:DCDetailLikeCellID];
-		[_collectionView registerClass:[DCDetailPartCommentCell class] forCellWithReuseIdentifier:DCDetailPartCommentCellID];
-		[_collectionView registerClass:[DCDetailServicetCell class] forCellWithReuseIdentifier:DCDetailServicetCellID];
-		//注册footer
-		[_collectionView registerClass:[DCDetailOverFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:DCDetailOverFooterViewID];
-		[_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionElementKindSectionFooter"]; //间隔
-	}
-	return _collectionView;
-}
-
-- (WKWebView *)webView {
-	if (!_webView) {
-		_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaTopHeight - 50, SCREEN_WIDTH, SCREEN_HEIGHT)];
-		_webView.scrollView.contentInset = UIEdgeInsetsMake(SafeAreaTopHeight, 0, 0, 0);
-		_webView.scrollView.scrollIndicatorInsets = _webView.scrollView.contentInset;
-		[self.scrollView addSubview:_webView];
-	}
-	return _webView;
-}
 
 #pragma mark - LifeCycle
 - (void)viewDidLoad {
@@ -352,6 +299,62 @@ static NSString *const DCDetailOverFooterViewID = @"DCDetailOverFooterView";
 #pragma 退出界面
 - (void)selfAlterViewback {
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Lazy Load
+- (UIScrollView *)scrollView {
+	if (!_scrollView) {
+		_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+		_scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - SafeAreaTopHeight - 50) * 2);
+		_scrollView.showsVerticalScrollIndicator = NO;
+		_scrollView.pagingEnabled = YES;
+		//设置scrollView不能滑动，使用上拉刷新，下拉加载的方式滚动视图
+		_scrollView.scrollEnabled = NO;
+		[self.view addSubview:_scrollView];
+	}
+	return _scrollView;
+}
+
+- (UICollectionView *)collectionView {
+	if (!_collectionView) {
+		
+		UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
+		
+		flow.minimumLineSpacing = 0;
+		flow.minimumInteritemSpacing = 0;
+		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - SafeAreaTopHeight - 50) collectionViewLayout:flow];
+		_collectionView.showsVerticalScrollIndicator = NO;
+		_collectionView.delegate = self;
+		_collectionView.dataSource = self;
+		[self.scrollView addSubview:_collectionView];
+		
+		//注册header
+		[_collectionView registerClass:[DCDetailShuffingHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShuffingHeadViewID];
+		[_collectionView registerClass:[DCDetailCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailCustomHeadViewID];
+		//注册Cell
+		[_collectionView registerClass:[DCDetailGoodReferralCell class] forCellWithReuseIdentifier:DCDetailGoodReferralCellID];
+		[_collectionView registerClass:[DCShowTypeOneCell class] forCellWithReuseIdentifier:DCShowTypeOneCellID];
+		[_collectionView registerClass:[DCShowTypeTwoCell class] forCellWithReuseIdentifier:DCShowTypeTwoCellID];
+		[_collectionView registerClass:[DCShowTypeThreeCell class] forCellWithReuseIdentifier:DCShowTypeThreeCellID];
+		[_collectionView registerClass:[DCShowTypeFourCell class] forCellWithReuseIdentifier:DCShowTypeFourCellID];
+		[_collectionView registerClass:[DCDetailLikeCell class] forCellWithReuseIdentifier:DCDetailLikeCellID];
+		[_collectionView registerClass:[DCDetailPartCommentCell class] forCellWithReuseIdentifier:DCDetailPartCommentCellID];
+		[_collectionView registerClass:[DCDetailServicetCell class] forCellWithReuseIdentifier:DCDetailServicetCellID];
+		//注册footer
+		[_collectionView registerClass:[DCDetailOverFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:DCDetailOverFooterViewID];
+		[_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionElementKindSectionFooter"]; //间隔
+	}
+	return _collectionView;
+}
+
+- (WKWebView *)webView {
+	if (!_webView) {
+		_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaTopHeight - 50, SCREEN_WIDTH, SCREEN_HEIGHT)];
+		_webView.scrollView.contentInset = UIEdgeInsetsMake(SafeAreaTopHeight, 0, 0, 0);
+		_webView.scrollView.scrollIndicatorInsets = _webView.scrollView.contentInset;
+		[self.scrollView addSubview:_webView];
+	}
+	return _webView;
 }
 
 - (void)dealloc {
