@@ -15,7 +15,7 @@
 	
 	NSString *text = @"抱歉，没有查询到相关结果";
 	
-	NSDictionary *attributes = @{NSFontAttributeName : [UIFont systemFontOfSize:16*kWJFontCoefficient],NSForegroundColorAttributeName : [UIColor colorWithRed:0.78 green:0.78 blue:0.78 alpha:1.00]};
+	NSDictionary *attributes = @{NSFontAttributeName : [UIFont systemFontOfSize:16 * kWJFontCoefficient],NSForegroundColorAttributeName : [UIColor colorWithRed:0.78 green:0.78 blue:0.78 alpha:1.00]};
 	
 	return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
@@ -27,7 +27,7 @@
 
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
-	return -70*kWJHeightCoefficient;
+	return -70 * kWJHeightCoefficient;
 }
 
 
