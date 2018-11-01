@@ -68,6 +68,7 @@ static NSString *const DCFeatureChoseTopCellID = @"DCFeatureChoseTopCell";
 	[self setupView];
 	
 	[self setupBottomView];
+	
 }
 
 #pragma mark - 弹出弹框
