@@ -9,6 +9,7 @@
  1.系统自带的导航栏不需要适配高度，自定义的导航栏需要适配高度。
  2.自定义导航栏用xib,自定义cell简单的用代码，复杂的用xib。
  3.用Reachability判断有网没网状态，没网状态界面自定义view。
+ 4.https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html
  */
 
 #pragma mark - life cycle
