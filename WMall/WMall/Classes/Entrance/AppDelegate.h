@@ -11,6 +11,12 @@
  3.用Reachability判断有网没网状态，没网状态界面自定义view。
  */
 
+#pragma mark - life cycle
+#pragma mark - UITableViewDelegate
+#pragma mark - event response
+#pragma mark - private methods
+#pragma mark - getters and setters
+
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
