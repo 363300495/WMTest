@@ -229,4 +229,16 @@
 }
 
 
++ (id)dc_chageControlCircularWith:(id)anyControl setCornerRadius:(NSInteger)radius setBorderWidth:(NSInteger)width setBorderColor:(UIColor *)borderColor canMasksToBounds:(BOOL)can {
+	
+	CALayer *icon_layer = [anyControl layer];
+	[icon_layer setCornerRadius:radius];
+	[icon_layer setBorderWidth:width];
+	[icon_layer setBorderColor:[borderColor CGColor]];
+	[icon_layer setMasksToBounds:can];
+	
+	return anyControl;
+}
+
+
 @end

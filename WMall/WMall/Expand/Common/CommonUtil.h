@@ -72,4 +72,17 @@
  */
 + (void)stringChangeColorLabel:(UILabel *)label range:(NSRange)range color:(UIColor *)textColor;
 
+
+/**
+ 设置按钮的圆角
+ 
+ @param anyControl 控件
+ @param radius 圆角度
+ @param width 边宽度
+ @param borderColor 边线颜色
+ @param can 是否裁剪
+ @return 控件
+ */
++ (id)dc_chageControlCircularWith:(id)anyControl setCornerRadius:(NSInteger)radius setBorderWidth:(NSInteger)width setBorderColor:(UIColor *)borderColor canMasksToBounds:(BOOL)can;
+
 @end
