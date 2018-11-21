@@ -87,6 +87,11 @@
 		E27D1B962167454400ABDACE /* HomeHighGoods.plist in Resources */ = {isa = PBXBuildFile; fileRef = E27D1B822167454400ABDACE /* HomeHighGoods.plist */; };
 		E27D1BA221676B1300ABDACE /* DCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27D1BA021676B1300ABDACE /* DCHomeViewController.m */; };
 		E27D1BA321676B1300ABDACE /* DCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E27D1BA121676B1300ABDACE /* DCHomeViewController.xib */; };
+		E27F7E9B21A52572000BE240 /* DCFeatureItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E27F7E9A21A52572000BE240 /* DCFeatureItemCell.m */; };
+		E27F7E9E21A52615000BE240 /* DCFeatureList.m in Sources */ = {isa = PBXBuildFile; fileRef = E27F7E9D21A52615000BE240 /* DCFeatureList.m */; };
+		E27F7EA121A53955000BE240 /* DCFeatureHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E27F7EA021A53955000BE240 /* DCFeatureHeaderView.m */; };
+		E27F7EA421A539D5000BE240 /* DCFeatureTitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E27F7EA321A539D5000BE240 /* DCFeatureTitleItem.m */; };
+		E27F7EA721A54310000BE240 /* DCFeatureItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E27F7EA621A54310000BE240 /* DCFeatureItem.m */; };
 		E28181F3216783800067964A /* DCClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28181F1216783800067964A /* DCClassifyViewController.m */; };
 		E28181F4216783800067964A /* DCClassifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28181F2216783800067964A /* DCClassifyViewController.xib */; };
 		E28181F7216783DD0067964A /* DCShoppingCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28181F6216783DD0067964A /* DCShoppingCarViewController.m */; };
@@ -173,6 +178,7 @@
 		E2D2D285216628EE00EBE661 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D284216628EE00EBE661 /* MainViewController.m */; };
 		E2D2D2892166296800EBE661 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D2882166296800EBE661 /* Reachability.m */; };
 		E2D2D28C216632A700EBE661 /* BaseViewController+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D28B216632A700EBE661 /* BaseViewController+EmptyDataSet.m */; };
+		E2DD7A2921A2C28700F472C4 /* DCCollectionHeaderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DD7A2821A2C28700F472C4 /* DCCollectionHeaderLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -312,6 +318,16 @@
 		E27D1B9F21676B1300ABDACE /* DCHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHomeViewController.h; sourceTree = "<group>"; };
 		E27D1BA021676B1300ABDACE /* DCHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCHomeViewController.m; sourceTree = "<group>"; };
 		E27D1BA121676B1300ABDACE /* DCHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DCHomeViewController.xib; sourceTree = "<group>"; };
+		E27F7E9921A52572000BE240 /* DCFeatureItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCFeatureItemCell.h; sourceTree = "<group>"; };
+		E27F7E9A21A52572000BE240 /* DCFeatureItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFeatureItemCell.m; sourceTree = "<group>"; };
+		E27F7E9C21A52615000BE240 /* DCFeatureList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCFeatureList.h; sourceTree = "<group>"; };
+		E27F7E9D21A52615000BE240 /* DCFeatureList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFeatureList.m; sourceTree = "<group>"; };
+		E27F7E9F21A53955000BE240 /* DCFeatureHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCFeatureHeaderView.h; sourceTree = "<group>"; };
+		E27F7EA021A53955000BE240 /* DCFeatureHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFeatureHeaderView.m; sourceTree = "<group>"; };
+		E27F7EA221A539D5000BE240 /* DCFeatureTitleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCFeatureTitleItem.h; sourceTree = "<group>"; };
+		E27F7EA321A539D5000BE240 /* DCFeatureTitleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFeatureTitleItem.m; sourceTree = "<group>"; };
+		E27F7EA521A54310000BE240 /* DCFeatureItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFeatureItem.h; sourceTree = "<group>"; };
+		E27F7EA621A54310000BE240 /* DCFeatureItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFeatureItem.m; sourceTree = "<group>"; };
 		E28181F0216783800067964A /* DCClassifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCClassifyViewController.h; sourceTree = "<group>"; };
 		E28181F1216783800067964A /* DCClassifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCClassifyViewController.m; sourceTree = "<group>"; };
 		E28181F2216783800067964A /* DCClassifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DCClassifyViewController.xib; sourceTree = "<group>"; };
@@ -478,6 +494,8 @@
 		E2D2D2882166296800EBE661 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E2D2D28A216632A700EBE661 /* BaseViewController+EmptyDataSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+EmptyDataSet.h"; sourceTree = "<group>"; };
 		E2D2D28B216632A700EBE661 /* BaseViewController+EmptyDataSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseViewController+EmptyDataSet.m"; sourceTree = "<group>"; };
+		E2DD7A2721A2C28700F472C4 /* DCCollectionHeaderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCCollectionHeaderLayout.h; sourceTree = "<group>"; };
+		E2DD7A2821A2C28700F472C4 /* DCCollectionHeaderLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCCollectionHeaderLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -911,6 +929,12 @@
 			children = (
 				E28F42A1217DAE8B005B1FC6 /* DCCommentPicItem.h */,
 				E28F42A2217DAE8B005B1FC6 /* DCCommentPicItem.m */,
+				E27F7E9C21A52615000BE240 /* DCFeatureList.h */,
+				E27F7E9D21A52615000BE240 /* DCFeatureList.m */,
+				E27F7EA221A539D5000BE240 /* DCFeatureTitleItem.h */,
+				E27F7EA321A539D5000BE240 /* DCFeatureTitleItem.m */,
+				E27F7EA521A54310000BE240 /* DCFeatureItem.h */,
+				E27F7EA621A54310000BE240 /* DCFeatureItem.m */,
 			);
 			path = PictureComment;
 			sourceTree = "<group>";
@@ -1168,6 +1192,7 @@
 		E2C0039E2170AB9300200F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD7A2621A2C1D200F472C4 /* CustionView */,
 				E29C6AC82189AED8006D62F6 /* TableView */,
 				E27C5A1E2175C88C0040642F /* CollectionView */,
 			);
@@ -1440,6 +1465,19 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		E2DD7A2621A2C1D200F472C4 /* CustionView */ = {
+			isa = PBXGroup;
+			children = (
+				E2DD7A2721A2C28700F472C4 /* DCCollectionHeaderLayout.h */,
+				E2DD7A2821A2C28700F472C4 /* DCCollectionHeaderLayout.m */,
+				E27F7E9921A52572000BE240 /* DCFeatureItemCell.h */,
+				E27F7E9A21A52572000BE240 /* DCFeatureItemCell.m */,
+				E27F7E9F21A53955000BE240 /* DCFeatureHeaderView.h */,
+				E27F7EA021A53955000BE240 /* DCFeatureHeaderView.m */,
+			);
+			path = CustionView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1620,6 +1658,7 @@
 				E2A886032171B445002CFAF1 /* UIView+DCExtension.m in Sources */,
 				E24B419D21689FD100F7EF95 /* DCSlideshowHeadView.m in Sources */,
 				E2C44C9C21807B67005E8938 /* DCPersonOneCell.m in Sources */,
+				E27F7E9E21A52615000BE240 /* DCFeatureList.m in Sources */,
 				E2AF4A882188209E00FC0FAC /* XWDrawerAnimator.m in Sources */,
 				E24B41A92168A05800F7EF95 /* DCOverFootView.m in Sources */,
 				E24B41A32168A02E00F7EF95 /* DCTopLineFootView.m in Sources */,
@@ -1649,6 +1688,7 @@
 				E2AF4A772188209E00FC0FAC /* UINavigationController+XWTransition.m in Sources */,
 				E2AF4A8E2188209E00FC0FAC /* XWFilterAnimator+XWMod.m in Sources */,
 				E2CC8EB42176F7760063BFEE /* DCDetailServicetCell.m in Sources */,
+				E27F7E9B21A52572000BE240 /* DCFeatureItemCell.m in Sources */,
 				E2CC8EBD2176FC9F0063BFEE /* DCUpDownButton.m in Sources */,
 				E2AF4A812188209E00FC0FAC /* XWCoolAnimator+XWFold.m in Sources */,
 				E2D2D26F2165EB5100EBE661 /* BaseCollectionViewCell.m in Sources */,
@@ -1656,6 +1696,7 @@
 				E2AF4A8B2188209E00FC0FAC /* XWFilterAnimator+XWCopyMachine.m in Sources */,
 				E25494C52179EC1B00DF9992 /* DCDetailLikeItemCell.m in Sources */,
 				E2AF4A822188209E00FC0FAC /* XWCoolAnimator+XWLines.m in Sources */,
+				E2DD7A2921A2C28700F472C4 /* DCCollectionHeaderLayout.m in Sources */,
 				E2D2D26D2165EB5100EBE661 /* BaseTabBarViewController.m in Sources */,
 				E28F42C2217DE722005B1FC6 /* SDBrowserImageView.m in Sources */,
 				E2D2D2472165E15800EBE661 /* main.m in Sources */,
@@ -1676,6 +1717,7 @@
 				E2D2D285216628EE00EBE661 /* MainViewController.m in Sources */,
 				E260F452217F0A03002EABC8 /* LBXScanNetAnimation.m in Sources */,
 				E2AF4A922188209E00FC0FAC /* XWFilterAnimator.m in Sources */,
+				E27F7EA421A539D5000BE240 /* DCFeatureTitleItem.m in Sources */,
 				E2AF4A872188209E00FC0FAC /* XWCoolAnimator.m in Sources */,
 				E240460E21673CFE0019DFEA /* AlertViewUtil.m in Sources */,
 				E29B018F216F309700020AFE /* DCGoodsSetViewController.m in Sources */,
@@ -1703,6 +1745,7 @@
 				E28F42C4217DE722005B1FC6 /* SDWaitingView.m in Sources */,
 				E29C6ACB2189AF21006D62F6 /* DCFeatureChoseTopCell.m in Sources */,
 				E2557ABF217B081E003DC7D0 /* DCCommentContentCell.m in Sources */,
+				E27F7EA721A54310000BE240 /* DCFeatureItem.m in Sources */,
 				E2557AC5217B0B81003DC7D0 /* DCCommentOneCell.m in Sources */,
 				E2557AC8217B0B95003DC7D0 /* DCCommentTwoCell.m in Sources */,
 				E2AF4A892188209E00FC0FAC /* XWFilterAnimator+XWBarSwipe.m in Sources */,
@@ -1719,6 +1762,7 @@
 				E24B41AC2168B75300F7EF95 /* DCGridItem.m in Sources */,
 				E27C5A1D2175BE200040642F /* DCLIRLButton.m in Sources */,
 				E28F42A3217DAE8B005B1FC6 /* DCCommentPicItem.m in Sources */,
+				E27F7EA121A53955000BE240 /* DCFeatureHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
